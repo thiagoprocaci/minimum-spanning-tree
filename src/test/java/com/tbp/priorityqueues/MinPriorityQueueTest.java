@@ -87,7 +87,7 @@ public class MinPriorityQueueTest {
         if (k > priorityQueue.size()){
             return true;
         }
-        // calculo para calcular os filhos de um item k no array
+        // calculo para encontrar os filhos de um item k no array
         int left = 2 * k;
         int right = (2 * k) + 1;
         if (left  <= priorityQueue.size() && arraySupport.greater(k, left, priorityQueueArray, null))  {
