@@ -10,9 +10,9 @@ public class ArrayValidator {
      * @param array
      */
     public static void validate(int index, int[] array) {
-        int N = array.length;
-        if (index < 0 || index >= N) {
-            throw new IndexOutOfBoundsException("index " + index + " is not between 0 and " + N);
+        int n = array.length;
+        if (index < 0 || index >= n) {
+            throw new IndexOutOfBoundsException("index " + index + " is not between 0 and " + n);
         }
     }
 
