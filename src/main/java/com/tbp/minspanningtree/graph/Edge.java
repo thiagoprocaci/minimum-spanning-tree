@@ -1,4 +1,4 @@
-package com.tbp.minspanningtree;
+package com.tbp.minspanningtree.graph;
 
 
 public class Edge implements IEdge {
@@ -49,5 +49,10 @@ public class Edge implements IEdge {
             return 1;
         }
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return v + " - " + w + " : " + weight;
     }
 }

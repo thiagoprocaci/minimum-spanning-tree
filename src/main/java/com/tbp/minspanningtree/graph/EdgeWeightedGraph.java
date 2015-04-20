@@ -1,4 +1,4 @@
-package com.tbp.minspanningtree;
+package com.tbp.minspanningtree.graph;
 
 
 import com.tbp.minspanningtree.support.Bag;

@@ -1,6 +1,8 @@
-package com.tbp.minspanningtree;
+package com.tbp.minspanningtree.graph;
 
 
+import com.tbp.minspanningtree.graph.Edge;
+import com.tbp.minspanningtree.graph.EdgeWeightedGraph;
 import org.junit.Before;
 import org.junit.Test;
 

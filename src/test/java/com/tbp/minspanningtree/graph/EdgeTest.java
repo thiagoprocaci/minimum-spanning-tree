@@ -1,6 +1,7 @@
-package com.tbp.minspanningtree;
+package com.tbp.minspanningtree.graph;
 
 
+import com.tbp.minspanningtree.graph.Edge;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

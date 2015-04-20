@@ -1,4 +1,4 @@
-package com.tbp.minspanningtree;
+package com.tbp.minspanningtree.graph;
 
 
 public interface IGraph {
