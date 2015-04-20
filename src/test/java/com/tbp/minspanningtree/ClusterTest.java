@@ -1,25 +1,25 @@
 package com.tbp.minspanningtree;
 
 
+import com.tbp.minspanningtree.clustering.Cluster;
 import com.tbp.minspanningtree.graph.Edge;
 import com.tbp.minspanningtree.graph.EdgeWeightedGraph;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-public class KruskalMSTTest {
+import static org.junit.Assert.assertEquals;
 
-    private KruskalMST kruskalQuickUnion;
-    private KruskalMST kruskalQuickFind;
+public class ClusterTest {
+
+    private Cluster cluster;
 
     @Before
     public void doBefore() {
-        kruskalQuickFind = new KruskalQuickFind();
-        kruskalQuickUnion = new KruskalQuickUnion();
+        cluster = new Cluster();
     }
 
     @Test
-    public void testRun() {
+    public void testClustering() {
         EdgeWeightedGraph graph  = new EdgeWeightedGraph(6);
         graph.addEdge(new Edge(0,1,1d));
         graph.addEdge(new Edge(3,4,9d));
@@ -34,22 +34,8 @@ public class KruskalMSTTest {
         assertEquals(6, graph.V());
         assertEquals(9, graph.E());
 
-        kruskalQuickUnion.run(graph);
-        kruskalQuickFind.run(graph);
-
-        assertEquals(16, kruskalQuickUnion.weight(), 0.001);
-        assertEquals(16, kruskalQuickFind.weight(), 0.001);
-        int count = 0;
-        for(Edge edge: kruskalQuickUnion.edges()) {
-            count++;
-        }
-        count = 0;
-        for(Edge edge: kruskalQuickFind.edges()) {
-            count++;
-        }
-
-        assertEquals(5, count);
-
+        cluster.createClusters(graph, 2);
+        cluster.print();
 
 
     }

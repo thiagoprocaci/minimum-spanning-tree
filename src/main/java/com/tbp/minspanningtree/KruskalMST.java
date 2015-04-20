@@ -6,7 +6,6 @@ import com.tbp.minspanningtree.graph.EdgeWeightedGraph;
 import com.tbp.minspanningtree.support.Queue;
 import com.tbp.priorityqueues.MinPriorityQueue;
 import com.tbp.priorityqueues.PriorityQueue;
-import com.tbp.unionfind.QuickUnion;
 import com.tbp.unionfind.UnionFind;
 
 public abstract class KruskalMST {
