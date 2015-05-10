@@ -1,7 +1,7 @@
-package com.tbp.minspanningtree.graph;
+package com.tbp.graph;
 
 
-import com.tbp.minspanningtree.support.Bag;
+import com.tbp.support.Bag;
 
 public class EdgeWeightedGraph implements IGraph {
 

@@ -1,4 +1,4 @@
-package com.tbp.minspanningtree.graph;
+package com.tbp.graph;
 
 
 public class Edge implements IEdge {

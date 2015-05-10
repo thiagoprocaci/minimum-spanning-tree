@@ -1,4 +1,4 @@
-package com.tbp.minspanningtree.support;
+package com.tbp.support;
 
 
 import org.junit.Before;

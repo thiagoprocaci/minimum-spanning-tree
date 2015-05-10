@@ -1,9 +1,9 @@
 package com.tbp.minspanningtree;
 
 
-import com.tbp.minspanningtree.graph.Edge;
-import com.tbp.minspanningtree.graph.EdgeWeightedGraph;
-import com.tbp.minspanningtree.support.Queue;
+import com.tbp.graph.Edge;
+import com.tbp.graph.EdgeWeightedGraph;
+import com.tbp.support.Queue;
 import com.tbp.priorityqueues.MinPriorityQueue;
 import com.tbp.priorityqueues.PriorityQueue;
 import com.tbp.unionfind.UnionFind;

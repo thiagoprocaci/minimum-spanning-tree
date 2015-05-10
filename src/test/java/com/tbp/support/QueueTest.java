@@ -1,11 +1,9 @@
-package com.tbp.minspanningtree.support;
+package com.tbp.support;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;

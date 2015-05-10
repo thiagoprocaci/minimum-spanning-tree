@@ -1,4 +1,4 @@
-package com.tbp.minspanningtree.graph;
+package com.tbp.graph;
 
 
 public interface IEdge extends Comparable<IEdge> {
