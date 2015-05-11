@@ -1,26 +1,18 @@
-package com.tbp.minspanningtree;
+package com.tbp.search;
 
 
-import com.tbp.minspanningtree.clustering.Cluster;
 import com.tbp.graph.Edge;
 import com.tbp.graph.EdgeWeightedGraph;
-import org.junit.Before;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ClusterTest {
-
-    private Cluster cluster;
-
-    @Before
-    public void doBefore() {
-        cluster = new Cluster();
-    }
+public class DepthFirstSearchTest {
 
     @Test
-    public void testClustering() {
-        EdgeWeightedGraph graph  = new EdgeWeightedGraph(6);
+    public void testDFS() {
+        EdgeWeightedGraph graph  = new EdgeWeightedGraph(7);
         graph.addEdge(new Edge(0,1,1d));
         graph.addEdge(new Edge(3,4,9d));
         graph.addEdge(new Edge(4,5,7d));
@@ -31,12 +23,18 @@ public class ClusterTest {
         graph.addEdge(new Edge(4,2,4d));
         graph.addEdge(new Edge(0,4,3d));
 
-        assertEquals(6, graph.V());
+        assertEquals(7, graph.V());
         assertEquals(9, graph.E());
 
-        cluster.createClusters(graph, 2);
-        cluster.print();
 
+        DepthFirstSearch depthFirstSearch = new DepthFirstSearch(graph, 0);
+        for(int v = 0; v < graph.V(); v++ ) {
+            if(v != (graph.V() - 1)) {
+                Assert.assertTrue(depthFirstSearch.marked(v));
+            } else {
+                Assert.assertFalse(depthFirstSearch.marked(v));
+            }
+        }
 
     }
 }
