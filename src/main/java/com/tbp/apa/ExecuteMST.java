@@ -22,9 +22,7 @@ public class ExecuteMST {
     }
 
     public void run(String folderData) throws IOException {
-        String path = fileSupport.getAbsPathInResourceFolder(folderData);
-        File folder = new File(path);
-        List<File> fileList = fileSupport.listFiles(folder);
+        List<File> fileList = fileSupport.listFiles(folderData);
         for (File file : fileList) {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;

@@ -29,8 +29,7 @@ public class FileSupportTest {
     @Test
     public void testListFiles() {
         String path = fileSupport.getAbsPathInResourceFolder("grafosesparsos");
-        File folder = new File(path);
-        List<File> fileNameList = fileSupport.listFiles(folder);
+        List<File> fileNameList = fileSupport.listFiles(path);
         assertEquals(10, fileNameList.size());
         for(File f: fileNameList) {
             assertTrue(f.getName().endsWith("gs.txt"));
