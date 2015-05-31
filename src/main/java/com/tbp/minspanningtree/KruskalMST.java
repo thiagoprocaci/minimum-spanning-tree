@@ -13,6 +13,8 @@ public abstract class KruskalMST {
 
     private double weight;  // weight of MST
     private Queue<Edge> mst;  // edges in MST
+    private UnionFind uf;   // selected union-find algorithm
+
 
 
     public void run(EdgeWeightedGraph G) {
@@ -23,7 +25,7 @@ public abstract class KruskalMST {
         for (Edge e : G.edges()) {
             pq.insert(e);
         }
-        UnionFind uf = getUnionFindAlgorithm(G.V());
+        uf = createUnionFindAlgorithm(G.V());
         // run greedy algorithm
         while (!pq.isEmpty() && (mst.size() < G.V() - 1)) {
             Edge e = pq.delete();
@@ -37,6 +39,10 @@ public abstract class KruskalMST {
         }
     }
 
+    public UnionFind getUf() {
+        return uf;
+    }
+
     public Iterable<Edge> edges() {
         return mst;
     }
@@ -45,5 +51,5 @@ public abstract class KruskalMST {
         return weight;
     }
 
-    public abstract UnionFind getUnionFindAlgorithm(int numberOfNodes);
+    public abstract UnionFind createUnionFindAlgorithm(int numberOfNodes);
 }

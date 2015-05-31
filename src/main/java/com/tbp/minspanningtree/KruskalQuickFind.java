@@ -7,7 +7,7 @@ import com.tbp.unionfind.UnionFind;
 public class KruskalQuickFind extends KruskalMST {
 
     @Override
-    public UnionFind getUnionFindAlgorithm(int numberOfNodes) {
+    public UnionFind createUnionFindAlgorithm(int numberOfNodes) {
         return new QuickFind(numberOfNodes);
     }
 }

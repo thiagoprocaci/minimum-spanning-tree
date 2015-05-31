@@ -27,4 +27,16 @@ public interface UnionFind {
      */
     int count();
 
+    /**
+     *
+     * @return Returns number of times union was invoked
+     */
+    int countUnion();
+
+    /**
+     *
+     * @return Returns number of times find was invoked
+     */
+    int countFind();
+
 }

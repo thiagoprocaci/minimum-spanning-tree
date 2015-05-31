@@ -7,10 +7,16 @@ public class QuickFind implements UnionFind {
 
     private int[] componentArray; // componentArray[i] = component identifier of i
     private int componentArraySize;   // number of components
+    // number of times union was invoked
+    private int countUnion;
+    // number of times find was invoked
+    private int countFind;
 
 
     public QuickFind(int N) {
         // O(n) constructor
+        countFind = 0;
+        countUnion = 0;
         componentArraySize = N;
         componentArray = new int[N];
         for (int i = 0; i < N; i++) {
@@ -25,6 +31,7 @@ public class QuickFind implements UnionFind {
      */
     @Override
     public void union(int p, int q) {
+        countUnion++;
         if (connected(p, q)) {
             return;
         }
@@ -45,6 +52,7 @@ public class QuickFind implements UnionFind {
      */
     @Override
     public int find(int p) {
+        countFind++;
         // O(1)
         ArrayValidator.validate(p, componentArray);
         return componentArray[p];
@@ -58,9 +66,7 @@ public class QuickFind implements UnionFind {
      */
     @Override
     public boolean connected(int p, int q) {
-        ArrayValidator.validate(p, componentArray);
-        ArrayValidator.validate(q, componentArray);
-        return componentArray[p] == componentArray[q];
+        return find(p) == find(q);
     }
 
     /**
@@ -70,6 +76,16 @@ public class QuickFind implements UnionFind {
     @Override
     public int count() {
         return componentArraySize;
+    }
+
+    @Override
+    public int countUnion() {
+        return countUnion;
+    }
+
+    @Override
+    public int countFind() {
+        return countFind;
     }
 
 
