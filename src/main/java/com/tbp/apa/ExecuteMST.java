@@ -7,6 +7,8 @@ import com.tbp.apa.reader.LineSupport;
 import com.tbp.minspanningtree.KruskalMST;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class ExecuteMST {
@@ -14,14 +16,20 @@ public class ExecuteMST {
     private FileSupport fileSupport;
     private LineSupport lineSupport;
     private KruskalMST kruskalMST;
+    private String reportName;
+    private InstanceResult instanceResult;
 
     public ExecuteMST(FileSupport fileSupport, LineSupport lineSupport, KruskalMST kruskalMST) {
         this.fileSupport = fileSupport;
         this.lineSupport = lineSupport;
         this.kruskalMST = kruskalMST;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
+        this.reportName = kruskalMST.getClass().getSimpleName() + "-" + simpleDateFormat.format(new Date())  + ".csv";
+        writeToReport(InstanceResult.generateCSVHeader());
     }
 
     public void run(String folderData) throws IOException {
+
         List<File> fileList = fileSupport.listFiles(folderData);
         for (File file : fileList) {
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -33,24 +41,34 @@ public class ExecuteMST {
                     long startTime = System.currentTimeMillis();
                     kruskalMST.run((com.tbp.graph.EdgeWeightedGraph) graphDto.getGraph());
                     long endTime = System.currentTimeMillis();
-                    generateReport(graphDto, startTime, endTime, kruskalMST);
+                    generateResult(graphDto, startTime, endTime);
                     graphDto = new GraphDto(file);
                 }
             }
         }
     }
 
-    private void generateReport(GraphDto graphDto, long startTime, long endTime, KruskalMST kruskalMST) {
-        Report report = new Report();
-        report.setNumberEdges(graphDto.getGraph().E());
-        report.setNumberNodes(graphDto.getGraph().V());
-        report.setFileName(graphDto.getFile().getAbsolutePath());
-        report.setEndTime(endTime);
-        report.setStartTime(startTime);
-        report.setKruskalInstance(kruskalMST.getClass().getSimpleName());
-        report.setCountFind(kruskalMST.getUf().countFind());
-        report.setCountUnion(kruskalMST.getUf().countUnion());
-        System.out.println(report.toString());
+    private void generateResult(GraphDto graphDto, long startTime, long endTime) {
+        InstanceResult instanceResult = new InstanceResult();
+        instanceResult.setNumberEdges(graphDto.getGraph().E());
+        instanceResult.setNumberNodes(graphDto.getGraph().V());
+        instanceResult.setFileName(graphDto.getFile().getAbsolutePath());
+        instanceResult.setEndTime(endTime);
+        instanceResult.setStartTime(startTime);
+        instanceResult.setKruskalInstance(kruskalMST.getClass().getSimpleName());
+        instanceResult.setCountFind(kruskalMST.getUf().countFind());
+        instanceResult.setCountUnion(kruskalMST.getUf().countUnion());
+        writeToReport(instanceResult.generateCSVRow());
+    }
+
+    private void writeToReport(String content) {
+        try {
+            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(reportName, true)));
+            out.println(content);
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

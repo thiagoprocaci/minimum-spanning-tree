@@ -1,8 +1,9 @@
 package com.tbp.apa;
 
 
-public class Report {
+public class InstanceResult {
 
+    private String id;
     private long startTime;
     private long endTime;
     private String fileName;
@@ -11,6 +12,14 @@ public class Report {
     private String kruskalInstance;
     private int countUnion;
     private int countFind;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getKruskalInstance() {
         return kruskalInstance;
@@ -78,6 +87,54 @@ public class Report {
 
     public double getDuration() {
         return (endTime - startTime);
+    }
+
+    public String getGraphType() {
+        if(fileName.endsWith(".txt")) {
+            return "esparso";
+        }
+        return "completo";
+    }
+
+
+    public static String generateCSVHeader() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("File;");
+        builder.append("Kruskal Instance;");
+        builder.append("Duration (ms);");
+        builder.append("#Unions;");
+        builder.append("#Finds;");
+        builder.append("Start time;");
+        builder.append("End time;");
+        builder.append("#Nodes;");
+        builder.append("#Edges;");
+        builder.append("#Graph Type;");
+        return builder.toString();
+    }
+
+    public String generateCSVRow() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(fileName);
+        builder.append(";");
+        builder.append(kruskalInstance);
+        builder.append(";");
+        builder.append(getDuration());
+        builder.append(";");
+        builder.append(countUnion);
+        builder.append(";");
+        builder.append(countFind);
+        builder.append(";");
+        builder.append(startTime);
+        builder.append(";");
+        builder.append(endTime);
+        builder.append(";");
+        builder.append(numberNodes);
+        builder.append(";");
+        builder.append(numberEdges);
+        builder.append(";");
+        builder.append(getGraphType());
+        builder.append(";");
+        return builder.toString();
     }
 
     @Override
