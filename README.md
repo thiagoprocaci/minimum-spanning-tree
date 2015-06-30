@@ -12,5 +12,5 @@ Algoritmo de Kruskal para resolver o problema da árvore geradora mínima.
 * Faça o download da aplicação no github
 * Executar na pasta raiz do projeto o comando "mvn install"
 * Entrar na pasta target e executar "java -jar minimum-spanning-tree-1.0-SNAPSHOT-runnable.jar"
-* Após isso, 2 arquivos cvs serão gerados com os resultados das execuções;
+* Após isso, 2 arquivos cvs serão gerados com os resultados das execuções
 
