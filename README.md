@@ -1,4 +1,4 @@
-# minimum-spanning-tree (ávore geradorea mínima)
+# minimum-spanning-tree (árvore geradora mínima)
 
 Algoritmo de Kruskal para resolver o problema da árvore geradora mínima.
 
